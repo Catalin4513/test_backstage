@@ -6,7 +6,7 @@ metadata:
 spec:
   type: service
   owner: guest
-    compositeTypeRef:
+  compositeTypeRef:
     apiVersion: example.crossplane.io/v1
     kind: XMultiResource
   mode: Pipeline
