@@ -1,25 +1,15 @@
 apiVersion: backstage.io/v1alpha1
-kind: Template
+kind: Component
 metadata:
-  name: example-service-template
-  description: "A template for creating example services"
+  name: example-service
+  description: "An example service"
   tags:
-    - template
+    - service
 spec:
   type: service
+  lifecycle: production
   owner: team-example
-  path: "./templates/example-service-template"
-  parameters:
-    - title: "Service Name"
-      description: "Name of the service"
-      type: string
-      required: true
-    - title: "Service Description"
-      description: "A brief description of the service"
-      type: string
-      required: false
-  steps:
-    - name: "generate-service"
-      action: "backstage.io/generate"
-      input:
-        templatePath: "./templates/example-service"
+  consumesApis:
+    - example-api
+  providesApis:
+    - example-api
