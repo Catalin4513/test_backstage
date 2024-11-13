@@ -1,20 +1,13 @@
-apiVersion: scaffolder.backstage.io/v1beta3
+apiVersion: backstage.io/v1alpha1
 kind: Template
 metadata:
-  namespace: default
-  name: composition
-  title: Composition
-  description: An template that creates a composition
-relations:
-  - type: ownedBy
-    targetRef: user:default/guest
-    target:
-      kind: user
-      namespace: default
-      name: guest
+  name: test_backstage
+  annotations:
+    github.com/project-slug: Catalin4513/test_backstage
 spec:
-  owner: user:guest
+  owner: guest
   type: service
+  lifecycle: unknown
   compositeTypeRef:
     apiVersion: example.crossplane.io/v1
     kind: XMultiResource
