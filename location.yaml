@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: github-templates
+spec:
+  type: url
+  target: https://github.com/Catalin4513/test_backstage/blob/main/composition-example.yaml
+  allowedKinds:
+    - Template
