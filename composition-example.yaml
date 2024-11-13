@@ -1,70 +1,15 @@
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
+apiVersion: backstage.io/v1alpha1
+kind: Component
 metadata:
-  name: example-multi-resource-template
-  title: Example Multi-Resource Template
-  description: A template to provision resources including a storage bucket, database instance, and network subnet.
+  name: example-service
+  description: "An example service"
+  tags:
+    - service
 spec:
-  owner: team-owner
   type: service
-  parameters:
-    - title: Bucket Configuration
-      properties:
-        bucketRegion:
-          title: Bucket Region
-          type: string
-          description: The AWS region for the storage bucket.
-        bucketName:
-          title: Bucket Name
-          type: string
-          description: The name for the storage bucket.
-        storageClass:
-          title: Storage Class
-          type: string
-          description: The storage class of the bucket.
-    - title: Database Configuration
-      properties:
-        dbInstanceClass:
-          title: DB Instance Class
-          type: string
-          description: The class for the database instance.
-        dbEngine:
-          title: DB Engine
-          type: string
-          description: The engine type for the database.
-        allocatedStorage:
-          title: Allocated Storage
-          type: integer
-          description: Allocated storage size for the database instance.
-    - title: Subnet Configuration
-      properties:
-        cidrBlock:
-          title: CIDR Block
-          type: string
-          description: The CIDR block for the subnet.
-        availabilityZone:
-          title: Availability Zone
-          type: string
-          description: The availability zone for the subnet.
-        vpcId:
-          title: VPC ID
-          type: string
-          description: The ID of the VPC for the subnet.
-
-  steps:
-    - id: create-resources
-      name: Create AWS Resources
-      action: crossplane:apply-resource
-      input:
-        apiVersion: example.crossplane.io/v1
-        kind: XMultiResource
-        spec:
-          bucketRegion: ${{ parameters.bucketRegion }}
-          bucketName: ${{ parameters.bucketName }}
-          storageClass: ${{ parameters.storageClass }}
-          dbInstanceClass: ${{ parameters.dbInstanceClass }}
-          dbEngine: ${{ parameters.dbEngine }}
-          allocatedStorage: ${{ parameters.allocatedStorage }}
-          cidrBlock: ${{ parameters.cidrBlock }}
-          availabilityZone: ${{ parameters.availabilityZone }}
-          vpcId: ${{ parameters.vpcId }}
+  lifecycle: production
+  owner: team-example
+  consumesApis:
+    - example-api
+  providesApis:
+    - example-api
