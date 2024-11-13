@@ -1,8 +1,20 @@
-apiVersion: apiextensions.crossplane.io/v1
-kind: Composition
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
 metadata:
-  name: example-multi-resource
+  namespace: default
+  name: composition
+  title: Composition
+  description: An template that creates a composition
+relations:
+  - type: ownedBy
+    targetRef: user:default/guest
+    target:
+      kind: user
+      namespace: default
+      name: guest
 spec:
+  owner: user:guest
+  type: service
   compositeTypeRef:
     apiVersion: example.crossplane.io/v1
     kind: XMultiResource
