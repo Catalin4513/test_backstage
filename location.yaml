@@ -1,10 +1,28 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Template
 metadata:
-  name: test_backstage
+  name: test-template
+  title: "Test Template"
   annotations:
     github.com/project-slug: Catalin4513/test_backstage
 spec:
-  type: other
-  lifecycle: unknown
+  type: service
   owner: my-group
+  path: /path/to/template
+  schema:
+    required:
+      - name
+      - description
+    properties:
+      name:
+        title: "Name"
+        type: string
+        description: "The name of the component to be created"
+      description:
+        title: "Description"
+        type: string
+        description: "A brief description of the component"
+      owner:
+        title: "Owner"
+        type: string
+        description: "The team or group that will own the component"
