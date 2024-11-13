@@ -1,66 +1,70 @@
-apiVersion: backstage.io/v1alpha1
+apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: test_backstage
-  annotations:
-    github.com/project-slug: Catalin4513/test_backstage
+  name: example-multi-resource-template
+  title: Example Multi-Resource Template
+  description: A template to provision resources including a storage bucket, database instance, and network subnet.
 spec:
-  owner: guest
+  owner: team-owner
   type: service
-  lifecycle: unknown
-  compositeTypeRef:
-    apiVersion: example.crossplane.io/v1
-    kind: XMultiResource
-  mode: Pipeline
-  pipeline:
-  - step: patch-and-transform
-    functionRef:
-      name: function-patch-and-transform
-    input:
-      apiVersion: pt.fn.crossplane.io/v1beta1
-      kind: Resources
-      resources:
-      - name: storage-bucket
-        base:
-          apiVersion: s3.aws.upbound.io/v1beta1
-          kind: Bucket
-        patches:
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.bucketRegion
-          toFieldPath: spec.forProvider.region
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.bucketName
-          toFieldPath: spec.forProvider.name
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.storageClass
-          toFieldPath: spec.forProvider.storageClass
+  parameters:
+    - title: Bucket Configuration
+      properties:
+        bucketRegion:
+          title: Bucket Region
+          type: string
+          description: The AWS region for the storage bucket.
+        bucketName:
+          title: Bucket Name
+          type: string
+          description: The name for the storage bucket.
+        storageClass:
+          title: Storage Class
+          type: string
+          description: The storage class of the bucket.
+    - title: Database Configuration
+      properties:
+        dbInstanceClass:
+          title: DB Instance Class
+          type: string
+          description: The class for the database instance.
+        dbEngine:
+          title: DB Engine
+          type: string
+          description: The engine type for the database.
+        allocatedStorage:
+          title: Allocated Storage
+          type: integer
+          description: Allocated storage size for the database instance.
+    - title: Subnet Configuration
+      properties:
+        cidrBlock:
+          title: CIDR Block
+          type: string
+          description: The CIDR block for the subnet.
+        availabilityZone:
+          title: Availability Zone
+          type: string
+          description: The availability zone for the subnet.
+        vpcId:
+          title: VPC ID
+          type: string
+          description: The ID of the VPC for the subnet.
 
-      - name: database-instance
-        base:
-          apiVersion: rds.aws.upbound.io/v1beta1
-          kind: DBInstance
-        patches:
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.dbInstanceClass
-          toFieldPath: spec.forProvider.instanceClass
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.dbEngine
-          toFieldPath: spec.forProvider.engine
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.allocatedStorage
-          toFieldPath: spec.forProvider.allocatedStorage
-
-      - name: network-subnet
-        base:
-          apiVersion: ec2.aws.upbound.io/v1beta1
-          kind: Subnet
-        patches:
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.cidrBlock
-          toFieldPath: spec.forProvider.cidrBlock
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.availabilityZone
-          toFieldPath: spec.forProvider.availabilityZone
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.vpcId
-          toFieldPath: spec.forProvider.vpcId
+  steps:
+    - id: create-resources
+      name: Create AWS Resources
+      action: crossplane:apply-resource
+      input:
+        apiVersion: example.crossplane.io/v1
+        kind: XMultiResource
+        spec:
+          bucketRegion: ${{ parameters.bucketRegion }}
+          bucketName: ${{ parameters.bucketName }}
+          storageClass: ${{ parameters.storageClass }}
+          dbInstanceClass: ${{ parameters.dbInstanceClass }}
+          dbEngine: ${{ parameters.dbEngine }}
+          allocatedStorage: ${{ parameters.allocatedStorage }}
+          cidrBlock: ${{ parameters.cidrBlock }}
+          availabilityZone: ${{ parameters.availabilityZone }}
+          vpcId: ${{ parameters.vpcId }}
