@@ -1,10 +1,5 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
-metadata:
-  name: my-example-resource
-  description: "This is an example resource for a demo"
-  labels:
-    example: true
 spec:
   type: service
   owner: guest
