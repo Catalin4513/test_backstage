@@ -7,11 +7,4 @@ metadata:
     example: true
 spec:
   type: service
-  owner: team-example
-  lifecycle: production
-  ownerRefs:
-    - apiVersion: backstage.io/v1alpha1
-      kind: Group
-      name: team-example
-  system: my-example-system
-  uri: "https://example.com/resource"
+
