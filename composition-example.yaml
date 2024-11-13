@@ -1,15 +1,17 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Resource
 metadata:
-  name: example-service
-  description: "An example service"
-  tags:
-    - service
+  name: my-example-resource
+  description: "This is an example resource for a demo"
+  labels:
+    example: true
 spec:
   type: service
-  lifecycle: production
   owner: team-example
-  consumesApis:
-    - example-api
-  providesApis:
-    - example-api
+  lifecycle: production
+  ownerRefs:
+    - apiVersion: backstage.io/v1alpha1
+      kind: Group
+      name: team-example
+  system: my-example-system
+  uri: "https://example.com/resource"
