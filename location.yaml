@@ -1,9 +1,10 @@
 apiVersion: backstage.io/v1alpha1
-kind: Location
+kind: Component
 metadata:
-  name: github-templates
+  name: test_backstage
+  annotations:
+    github.com/project-slug: Catalin4513/test_backstage
 spec:
-  type: url
-  target: https://github.com/Catalin4513/test_backstage/blob/main/composition-example.yaml
-  allowedKinds:
-    - Template
+  type: other
+  lifecycle: unknown
+  owner: my-group
