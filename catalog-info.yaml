@@ -8,3 +8,7 @@ spec:
   type: other
   lifecycle: unknown
   owner: my-group
+  catalog:
+  rules:
+    - allow:
+        - kind: Template
