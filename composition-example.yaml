@@ -7,4 +7,5 @@ metadata:
     example: true
 spec:
   type: service
+  owner: guest
 
