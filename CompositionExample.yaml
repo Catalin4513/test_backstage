@@ -1,0 +1,61 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: example-multi-resource
+spec:
+  compositeTypeRef:
+    apiVersion: example.crossplane.io/v1
+    kind: XMultiResource
+  mode: Pipeline
+  pipeline:
+  - step: patch-and-transform
+    functionRef:
+      name: function-patch-and-transform
+    input:
+      apiVersion: pt.fn.crossplane.io/v1beta1
+      kind: Resources
+      resources:
+      - name: storage-bucket
+        base:
+          apiVersion: s3.aws.upbound.io/v1beta1
+          kind: Bucket
+        patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.bucketRegion
+          toFieldPath: spec.forProvider.region
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.bucketName
+          toFieldPath: spec.forProvider.name
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.storageClass
+          toFieldPath: spec.forProvider.storageClass
+
+      - name: database-instance
+        base:
+          apiVersion: rds.aws.upbound.io/v1beta1
+          kind: DBInstance
+        patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.dbInstanceClass
+          toFieldPath: spec.forProvider.instanceClass
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.dbEngine
+          toFieldPath: spec.forProvider.engine
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.allocatedStorage
+          toFieldPath: spec.forProvider.allocatedStorage
+
+      - name: network-subnet
+        base:
+          apiVersion: ec2.aws.upbound.io/v1beta1
+          kind: Subnet
+        patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.cidrBlock
+          toFieldPath: spec.forProvider.cidrBlock
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.availabilityZone
+          toFieldPath: spec.forProvider.availabilityZone
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.vpcId
+          toFieldPath: spec.forProvider.vpcId
