@@ -11,7 +11,7 @@
     "name": "my-resource-name",
     "description": "A brief description of the resource",
     "uid": "02a57471-54f1-4fb4-8d46-e7b7d282793e",
-    "etag": "c064962bf92488f44d8ed62d94aae6af74691917"
+    "etag": "bd903a880f78da04abd1fa312b5887bcfb65ccec"
   },
   "apiVersion": "backstage.io/v1alpha1",
   "kind": "Resource",
@@ -105,23 +105,5 @@
         "name": "guest"
       }
     }
-  ],
-  "status": {
-    "items": [
-      {
-        "type": "backstage.io/catalog-processing",
-        "level": "error",
-        "message": "InputError: Policy check failed for resource:default/my-resource-name; caused by Error: Unknown field relations",
-        "error": {
-          "name": "InputError",
-          "message": "Policy check failed for resource:default/my-resource-name; caused by Error: Unknown field relations",
-          "cause": {
-            "name": "Error",
-            "message": "Unknown field relations",
-            "stack": "Error: Unknown field relations\n    at NoForeignRootFieldsEntityPolicy.enforce (/home/catalin/projects/Backstage/crossplane-studio/node_modules/@backstage/catalog-model/src/entity/policies/NoForeignRootFieldsEntityPolicy.ts:37:15)\n    at AllEntityPolicies.enforce (/home/catalin/projects/Backstage/crossplane-studio/node_modules/@backstage/catalog-model/src/EntityPolicies.ts:27:35)\n    at <anonymous> (/home/catalin/projects/Backstage/crossplane-studio/node_modules/@backstage/plugin-catalog-backend/src/processing/DefaultCatalogProcessingOrchestrator.ts:249:32)"
-          }
-        }
-      }
-    ]
-  }
+  ]
 }
