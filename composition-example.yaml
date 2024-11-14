@@ -42,7 +42,7 @@
               "patches": [
                 {
                   "type": "FromCompositeFieldPath",
-                  "fromFieldPath": "path/to/source1",
+                  "fromFieldPath": "path/to/source12",
                   "toFieldPath": "path/to/target1"
                 },
                 {
