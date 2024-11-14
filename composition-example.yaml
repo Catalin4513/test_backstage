@@ -12,7 +12,7 @@ metadata:
   namespace: default
   name: my-resource-name
   description: A brief description of the resource
-  uid: 758a3385-37f2-4267-9869-52c98712f64c
+  uid: 9cd68631-c2a7-497b-bd7a-3f2364d22c00
   etag: 98c2871078aec7fed2d0ddd8eae0363960711e57
 apiVersion: backstage.io/v1alpha1
 kind: Resource
@@ -38,7 +38,7 @@ spec:
             patches:
               - type: FromCompositeFieldPath
                 fromFieldPath: path/to/source12
-                toFieldPath: path/to/target1
+                toFieldPath: path/to/target14
               - type: FromCompositeFieldPath
                 fromFieldPath: path/to/source2
                 toFieldPath: path/to/target2
