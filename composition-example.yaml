@@ -10,14 +10,14 @@
     "namespace": "default",
     "name": "my-resource-name",
     "description": "A brief description of the resource",
-    "uid": "f0d65327-8a30-489c-9e01-f7acaec4f408",
+    "uid": "580e313f-024a-4f03-b31e-10dc29326da0",
     "etag": "bd903a880f78da04abd1fa312b5887bcfb65ccec"
   },
   "apiVersion": "backstage.io/v1alpha1",
   "kind": "Resource",
   "spec": {
     "type": "service",
-    "owner": "guests",
+    "owner": "default",
     "compositeTypeRef": {
       "apiVersion": "example.crossplane.io/v1",
       "kind": "XMultiResource"
@@ -94,5 +94,16 @@
         }
       }
     ]
-  }
+  },
+  "relations": [
+    {
+      "type": "ownedBy",
+      "targetRef": "group:default/default",
+      "target": {
+        "kind": "group",
+        "namespace": "default",
+        "name": "default"
+      }
+    }
+  ]
 }
