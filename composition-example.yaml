@@ -1,8 +1,21 @@
-apiVersion: backstage.io/v1alpha1
-kind: Resource
 metadata:
+  namespace: default
+  annotations:
+    backstage.io/managed-by-location: >-
+      url:https://github.com/Catalin4513/test_backstage/tree/main/composition-example.yaml
+    backstage.io/managed-by-origin-location: >-
+      url:https://github.com/Catalin4513/test_backstage/blob/main/composition-example.yaml
+    backstage.io/view-url: >-
+      https://github.com/Catalin4513/test_backstage/tree/main/composition-example.yaml
+    backstage.io/edit-url: >-
+      https://github.com/Catalin4513/test_backstage/edit/main/composition-example.yaml
+    backstage.io/source-location: url:https://github.com/Catalin4513/test_backstage/tree/main/
   name: my-resource-name
   description: A brief description of the resource
+  uid: 580e313f-024a-4f03-b31e-10dc29326da0
+  etag: 2b0421d67b274ca1a5cfdf48046c60a3b41bb1a7
+apiVersion: backstage.io/v1alpha1
+kind: Resource
 spec:
   type: service
   owner: guest
@@ -11,52 +24,44 @@ spec:
     kind: XMultiResource
   mode: Pipeline
   pipeline:
-  - step: patch-and-transform
-    functionRef:
-      name: function-patch-and-transform
-    input:
-      apiVersion: pt.fn.crossplane.io/v1beta1
-      kind: Resources
-      resources:
-      - name: storage-bucket
-        base:
-          apiVersion: s3.aws.upbound.io/v1beta1
-          kind: Bucket
-        patches:
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.bucketRegion
-          toFieldPath: spec.forProvider.region
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.bucketName
-          toFieldPath: spec.forProvider.name
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.storageClass
-          toFieldPath: spec.forProvider.storageClass
-      - name: database-instance
-        base:
-          apiVersion: rds.aws.upbound.io/v1beta1
-          kind: DBInstance
-        patches:
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.dbInstanceClass
-          toFieldPath: spec.forProvider.instanceClass
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.dbEngine
-          toFieldPath: spec.forProvider.engine
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.allocatedStorage
-          toFieldPath: spec.forProvider.allocatedStorage
-      - name: network-subnet
-        base:
-          apiVersion: ec2.aws.upbound.io/v1beta1
-          kind: Subnet
-        patches:
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.cidrBlock
-          toFieldPath: spec.forProvider.cidrBlock
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.availabilityZone
-          toFieldPath: spec.forProvider.availabilityZone
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.vpcId
-          toFieldPath: spec.forProvider.vpcId
+    - step: patch-and-transform
+      functionRef:
+        name: function-patch-and-transform
+      input:
+        apiVersion: pt.fn.crossplane.io/v1beta1
+        kind: Resources
+        resources:
+          - name: storage-bucket
+            base:
+              apiVersion: s3.aws.upbound.io/v1beta1
+              kind: Bucket
+            patches:
+              - type: FromCompositeFieldPath
+                fromFieldPath: path/to/source12
+                toFieldPath: path/to/target1
+              - type: FromCompositeFieldPath
+                fromFieldPath: path/to/source2
+                toFieldPath: path/to/target2
+          - name: database-instance
+            base:
+              apiVersion: rds.aws.upbound.io/v1beta1
+              kind: DBInstance
+            patches:
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.dbInstanceClass
+                toFieldPath: spec.forProvider.instanceClass
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.dbEngine
+                toFieldPath: spec.forProvider.engine
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.allocatedStorage
+                toFieldPath: spec.forProvider.allocatedStorage
+          - name: network-subnet
+            base:
+              apiVersion: ec2.aws.upbound.io/v1beta1
+              kind: Subnet
+            patches:
+              - type: FromCompositeFieldPath
+                fromFieldPath: path/to/source3
+                toFieldPath: path/to/target3
+relations: []
