@@ -94,5 +94,16 @@
         }
       }
     ]
-  }
+  },
+  "relations": [
+    {
+      "type": "ownedBy",
+      "targetRef": "group:default/guest",
+      "target": {
+        "kind": "group",
+        "namespace": "default",
+        "name": "guest"
+      }
+    }
+  ]
 }
