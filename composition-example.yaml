@@ -1,5 +1,4 @@
 metadata:
-  namespace: default
   annotations:
     backstage.io/managed-by-location: >-
       url:https://github.com/Catalin4513/test_backstage/tree/main/composition-example.yaml
@@ -10,9 +9,10 @@ metadata:
     backstage.io/edit-url: >-
       https://github.com/Catalin4513/test_backstage/edit/main/composition-example.yaml
     backstage.io/source-location: url:https://github.com/Catalin4513/test_backstage/tree/main/
+  namespace: default
   name: my-resource-name
   description: A brief description of the resource
-  uid: 9cd12379-7019-4e10-97a8-85e97333526b
+  uid: 758a3385-37f2-4267-9869-52c98712f64c
   etag: 98c2871078aec7fed2d0ddd8eae0363960711e57
 apiVersion: backstage.io/v1alpha1
 kind: Resource
@@ -48,11 +48,5 @@ spec:
               kind: Subnet
             patches:
               - type: FromCompositeFieldPath
-                fromFieldPath: spec.cidrBlock
-                toFieldPath: spec.forProvider.cidrBlock
-              - type: FromCompositeFieldPath
-                fromFieldPath: spec.availabilityZone
-                toFieldPath: spec.forProvider.availabilityZone
-              - type: FromCompositeFieldPath
-                fromFieldPath: spec.vpcId
-                toFieldPath: spec.forProvider.vpcId
+                fromFieldPath: path/to/source3
+                toFieldPath: path/to/target3
