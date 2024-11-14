@@ -56,4 +56,3 @@ spec:
               - type: FromCompositeFieldPath
                 fromFieldPath: spec.vpcId
                 toFieldPath: spec.forProvider.vpcId
-relations: []
