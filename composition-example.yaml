@@ -17,7 +17,7 @@
   "kind": "Resource",
   "spec": {
     "type": "service",
-    "owner": "default",
+    "owner": "guests",
     "compositeTypeRef": {
       "apiVersion": "example.crossplane.io/v1",
       "kind": "XMultiResource"
