@@ -20,8 +20,8 @@ spec:
   type: service
   owner: guest
   compositeTypeRef:
-    apiVersion: example.crossplane.io/v1
-    kind: XMultiResource
+    apiVersion: aws.platform.upbound.io/v1alpha1
+    kind: XKarpenter
   mode: Pipeline
   pipeline:
     - step: patch-and-transform
@@ -33,8 +33,8 @@ spec:
         resources:
           - name: storage-bucket
             base:
-              apiVersion: s3.aws.upbound.io/v1beta1
-              kind: Bucket
+              apiVersion: s3.aws.upbound.io/v1beta2
+              kind: BucketIntelligentTieringConfiguration
             patches:
               - type: FromCompositeFieldPath
                 fromFieldPath: path/to/source12
@@ -44,8 +44,8 @@ spec:
                 toFieldPath: path/to/target2
           - name: network-subnet
             base:
-              apiVersion: ec2.aws.upbound.io/v1beta1
-              kind: Subnet
+              apiVersion: s3.aws.upbound.io/v1beta2
+              kind: BucketReplicationConfiguration
             patches:
               - type: FromCompositeFieldPath
                 fromFieldPath: path/to/source3
