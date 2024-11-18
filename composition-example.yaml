@@ -46,6 +46,10 @@ spec:
                 - type: convert
                   convert:
                     toType: string
+                - type: map
+                  map:
+                    us: us-east-2
+                    eu: eu-north-1
           - name: network-subnet
             base:
               apiVersion: s3.aws.upbound.io/v1beta2
