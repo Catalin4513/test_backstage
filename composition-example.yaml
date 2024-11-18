@@ -42,6 +42,10 @@ spec:
               - type: FromCompositeFieldPath
                 fromFieldPath: path/to/source2
                 toFieldPath: path/to/target2
+                transforms:
+                - type: convert
+                  convert:
+                    toType: string
           - name: network-subnet
             base:
               apiVersion: s3.aws.upbound.io/v1beta2
