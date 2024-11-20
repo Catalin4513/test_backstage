@@ -12,7 +12,7 @@ metadata:
   namespace: default
   name: my-resource-name
   description: A brief description of the resource
-  uid: 9cd68631-c2a7-497b-bd7a-3f2364d22c00
+  uid: c6d25ecf-07db-4d15-889b-a0f361dc96c1
   etag: 98c2871078aec7fed2d0ddd8eae0363960711e57
 apiVersion: backstage.io/v1alpha1
 kind: Resource
@@ -36,30 +36,14 @@ spec:
               apiVersion: s3.aws.upbound.io/v1beta2
               kind: BucketIntelligentTieringConfiguration
             patches:
+              - type: ToCompositeFieldPath
+                fromFieldPath: path/to/source123
+                toFieldPath: path/to/target145
               - type: FromCompositeFieldPath
-                fromFieldPath: path/to/source12
-                toFieldPath: path/to/target14
-              - type: FromCompositeFieldPath
-                fromFieldPath: path/to/source2
-                toFieldPath: path/to/target2
-                transforms:
-                - type: convert
-                  convert:
-                    toType: string
-                - type: map
-                  map:
-                    us: us-east-2
-                    eu: eu-north-1
+                fromFieldPath: path/to/source26
+                toFieldPath: path/to/target27
           - name: network-subnet
             base:
               apiVersion: s3.aws.upbound.io/v1beta2
               kind: BucketReplicationConfiguration
-            patches:
-              - type: ToCompositeFieldPath
-                fromFieldPath: path/to/source3
-                toFieldPath: path/to/target3
-                transforms:
-                - type: map
-                  map:
-                    "field1-text": "firstField"
-                    "field2-text": "secondField"
+            patches: []
