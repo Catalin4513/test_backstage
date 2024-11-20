@@ -55,6 +55,11 @@ spec:
               apiVersion: s3.aws.upbound.io/v1beta2
               kind: BucketReplicationConfiguration
             patches:
-              - type: FromCompositeFieldPath
+              - type: ToCompositeFieldPath
                 fromFieldPath: path/to/source3
                 toFieldPath: path/to/target3
+                transforms:
+                - type: map
+                  map:
+                    "field1-text": "firstField"
+                    "field2-text": "secondField"
