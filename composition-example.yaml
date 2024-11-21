@@ -20,8 +20,8 @@ spec:
   type: service
   owner: guest
   compositeTypeRef:
-    apiVersion: aws.platform.upbound.io/v1alpha1
-    kind: XKarpenter
+    apiVersion: s3.aws.upbound.io/v1beta2
+    kind: BucketVersioning
   mode: Pipeline
   pipeline:
     - step: patch-and-transform
