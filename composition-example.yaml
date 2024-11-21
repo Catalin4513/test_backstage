@@ -59,7 +59,7 @@ spec:
                 fromFieldPath: path/to/source3
                 toFieldPath: path/to/target3
                 transforms:
-                  - type: match
+                - type: match
                   match:
                     patterns:
                       - type: literal
