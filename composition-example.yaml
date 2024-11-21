@@ -59,7 +59,7 @@ spec:
                 fromFieldPath: path/to/source3
                 toFieldPath: path/to/target3
                 transforms:
-                - type: map
-                  map:
-                    "field1-text": "firstField"
-                    "field2-text": "secondField"
+                  match:
+                    patterns:
+                      - type: literal
+                      - type: regexp
