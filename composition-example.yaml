@@ -59,8 +59,8 @@ spec:
                 fromFieldPath: path/to/source3
                 toFieldPath: path/to/target3
                 transforms:
-                - type: match
-                  match:
-                    patterns:
-                      - type: literal
-                      - type: regexp
+                  - type: match
+                    match:
+                      patterns:
+                        - type: literal
+                        - type: regexp
