@@ -1,0 +1,14 @@
+apiVersion: meta.pkg.crossplane.io/v1
+kind: Configuration
+metadata:
+  name: 
+  annotations:
+    meta.crossplane.io/source: github.com/crossplane/crossplane
+    guide: quickstart
+spec:
+  type: Configuration
+  owner: Catalin4513
+  
+  
+  dependsOn: [object Object],[object Object]
+    
