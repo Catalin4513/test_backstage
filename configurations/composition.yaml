@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: sgdfgdfg
+  name: 34543534
   description: Crossplane Composition
   annotations:
     backstage.io/edit-url: /composition-editor/edit/
@@ -9,6 +9,6 @@ spec:
   type: Composition
   owner: Catalin4513
   compositeTypeRef:
-    apiVersion: sdfg
-    kind: 3454353
+    apiVersion: 32434
+    kind: ewer
   

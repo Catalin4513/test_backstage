@@ -1,7 +1,7 @@
 apiVersion: meta.pkg.crossplane.io/v1
-kind: Configuration
+kind: Resource
 metadata:
-  name: ertret
+  name: tertre
   annotations:
     meta.crossplane.io/source: github.com/crossplane/crossplane
     guide: quickstart
@@ -9,5 +9,6 @@ spec:
   type: Configuration
   owner: Catalin4513
   crossplane:
-    version: retretre
+    version: 345345
+  dependsOn: []
     
