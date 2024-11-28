@@ -10,5 +10,4 @@ spec:
   owner: Catalin4513
   crossplane:
     version: retretre
-  dependsOn: []
     
