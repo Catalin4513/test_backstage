@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: ewrwerwer
+  description: Crossplane Composition
+  annotations:
+    backstage.io/edit-url: /composition-editor/edit/ewrwerwer
+spec:
+  type: Composition
+  owner: Catalin4513
