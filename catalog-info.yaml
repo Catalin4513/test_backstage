@@ -1,14 +1,8 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Location
 metadata:
-  name: test_backstage
-  annotations:
-    github.com/project-slug: Catalin4513/test_backstage
+  name: example-all
+  description: A collection of all Backstage example entities, except users, groups, and templates
 spec:
-  type: other
-  lifecycle: unknown
-  owner: my-group
-  catalog:
-  rules:
-    - allow:
-        - kind: Template
+  targets:
+    - ./composition-example.yaml
