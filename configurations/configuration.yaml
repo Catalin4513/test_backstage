@@ -1,4 +1,4 @@
-apiVersion: meta.pkg.crossplane.io/v1
+apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
   name: tertre
