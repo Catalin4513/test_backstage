@@ -1,0 +1,19 @@
+apiVersion: meta.pkg.crossplane.io/v1
+kind: Configuration
+metadata:
+  name: 
+  annotations:
+    meta.crossplane.io/maintainer: 
+    meta.crossplane.io/source: github.com/crossplane/crossplane
+    guide: quickstart
+    provider: 
+spec:
+  type: Configuration
+  crossplane:
+    version: uuuuuuuuuuuuu
+  dependsOn:
+    
+    - provider: "{{ dependency.provider }}"
+      providerVersion: "{{ dependency.providerVersion }}"
+    
+
