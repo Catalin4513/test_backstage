@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: qqqqqqqqq
+  description: Crossplane Composition
+  annotations:
+    backstage.io/edit-url: /composition-editor/edit/
+spec:
+  type: Composition
+  owner: Catalin4513
+  compositeTypeRef:
+    apiVersion: wwwwwwwwww
+    kind: eeeeeeeeeeeeee
+    
