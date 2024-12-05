@@ -1,13 +1,14 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: thisisconfiguration
+  name: someconfigurationname
   annotations:
+    imageName: ghcr.io/catalin4513/notest1234:1.2.0
     meta.crossplane.io/source: github.com/crossplane/crossplane
     guide: quickstart
 spec:
   type: Configuration
   owner: Catalin4513
   crossplane:
-    version: v1.8.0
+    version: 1.8.0
   dependsOn: []
