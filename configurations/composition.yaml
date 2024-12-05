@@ -1,14 +1,15 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: 34543534
+  name: alterego
   description: Crossplane Composition
   annotations:
     backstage.io/edit-url: /composition-editor/edit/
 spec:
+  dependsOn:
+    - resource:default/thisisconfiguration
   type: Composition
   owner: Catalin4513
   compositeTypeRef:
-    apiVersion: 32434
-    kind: ewer
-  
+    apiVersion: 1.0.0
+    kind: Composition

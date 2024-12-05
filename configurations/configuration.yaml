@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: tertre
+  name: thisisconfiguration
   annotations:
     meta.crossplane.io/source: github.com/crossplane/crossplane
     guide: quickstart
@@ -9,6 +9,5 @@ spec:
   type: Configuration
   owner: Catalin4513
   crossplane:
-    version: 345345
+    version: v1.8.0
   dependsOn: []
-    
